@@ -1,0 +1,60 @@
+<!doctype html>
+<html ng-app='ShoppingListCheckOff'lang="en">
+  <head>
+    <title>Shopping List Check Off</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <script src="angular.min.js"></script>
+    <script src="app2.js"></script>
+    <style>
+      .emptyMessage {0x6
+        font-weight: bold;
+        color: red;
+        font-size: 1.2em;
+      }
+      li {
+        margin-bottom: 7px;
+        font-size: 1.2em;
+      }
+      li > button {
+        margin-left: 6px;
+      }
+      button > span {
+        color: green;
+      }
+    </style>
+    <script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.7'><\/script>".replace("HOST", location.hostname));
+//]]></script>
+  </head>
+  <script id="__bs_script__">//<![CDATA[
+    document.write("<script async src='http://HOST:3000/browser-sync/browser-sync-client.js?v=2.26.7'><\/script>".replace("HOST", location.hostname));
+//]]></script>
+<body>
+  <div class="container">
+  <h1>Shopping List Check Off</h1>
+  <div class="row">
+    <!-- To Buy List -->
+    <div class="col-md-6">
+      <div id="list1" ng-controller='ToBuyController' as list1>
+     <h2>To Buy:</h2>
+     <ol>
+       <li ng-repeat="item in list1.items">
+         {{ item.quantity }} of {{ item.name }}
+         <button ng-click="list1.removeItem($index);">Remove(Buy)Item</button>
+       </li>
+     </ol>
+
+     </div>
+    <!-- Already Bought List -->
+    <div class="col-md-6">
+      <div id="list2" ng-controller='AlreadyBoughtController' as list2>
+     <h2>Already Bought:</h2>
+     <li ng-repeat="item2 in list2.items">
+       {{ item2.quantity }} of {{ item2.name }}
+   <div class="emptyMessage">Nothing bought yet.</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
