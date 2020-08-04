@@ -1,0 +1,74 @@
+
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>hii</title>
+  </head>
+
+  <body>
+  <h1>hello</h1>
+  <fieldset>
+    <legend>Registration</legend>
+
+    <form name='regForm' novalidate>
+      Enter First Name: <input type="text" name="fname"
+        ng-model="reg.user.fname"
+        required
+        minlength="3"
+        ng-maxlength="10" style="background-color: #009688;">
+        {{ reg.user.fname }}
+        <span
+          ng-if="(regForm.fname.$error.minlength || regForm.fname.$error.required) && regForm.fname.$touched">
+          Firstname must be at least 3 characters long
+        </span>
+        <br>
+
+        Enter Last Name: <input type="text" name="lname"
+          ng-model="reg.user.lname"
+          required
+          minlength="3"
+          ng-maxlength="10" style="background-color: #009688;">
+          {{ reg.user.lname }}
+          <span
+            ng-if="(regForm.lname.$error.minlength || regForm.lname.$error.required) && regForm.lname.$touched">
+            Lastname must be at least 3 characters long
+          </span>
+          <br>
+
+      Enter Your Email Id: <input type="email" name="email" placeholder="Email"
+        ng-model="reg.user.email"
+        required style="background-color: #009688;">
+        <span ng-if="regForm.email.$invalid && regForm.email.$touched">
+          Must be a valid email address: handle@domain format
+        </span>
+        <br>
+
+      Enter Phone no: <input type="text" name="phone" placeholder="Phone ###-###-####"
+        ng-model="reg.user.phone"
+        pattern="(\d{3})-(\d{3})-(\d{4})"
+         style="background-color: #009688;">
+        <span ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+          Phone must be in the format ###-###-####.
+        </span>
+        <br>
+        Enter Favourite Dish: <input type="text" name="dish" ng-model="reg.dish">
+
+    <button
+      ng-disabled="regForm.$invalid"
+      ng-click="reg.submit()">Submit</button>
+
+      <div style="margin-top: 10px;">
+       Form valid? {{ regForm.$valid }}
+      </div>
+  </form>
+</fieldset>
+ <div id="info" ng-if="reg.completed">
+   Username: {{ reg.user.username}} <br>
+   Email: {{ reg.user.email}} <br>
+   Phone: {{ reg.user.phone }}
+ </div>
+<h2>hii</h2>
+<script src="lib/angular.min.js"></script>
+  <script src="src/public/sign-up/signup.controller.js"></script>
+</body>
+</html>
