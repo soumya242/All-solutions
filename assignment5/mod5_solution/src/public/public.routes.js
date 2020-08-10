@@ -46,13 +46,15 @@ function routeConfig ($stateProvider) {
 .state('public.signup',{
   url:'/signup',
   templateUrl:'src/public/sign-up/sign-up.html',
-  //controller:'RegistrationController',
-  //controllerAs:'RegCtrl',
-  resolve:{
-   itemdetails:['$stateParams','MenuService',function($stateParams,MenuService){
-     return MenuService.getitemDetails($stateParams.dish);
-    }] }
+  controller:'SignUpController',
+  controllerAs:'signupCtrl',
+  })
 
-});
+  .state('public.info',{
+      url:'/info',
+      templateUrl:'src/public/info/info.html',
+      controller:'InfoController',
+      controllerAs:'infoCtrl',
+           })
 }
 })();
